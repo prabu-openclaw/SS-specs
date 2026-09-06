@@ -46,6 +46,7 @@ Non-trivial or feature-sized work starts with [`intent/`](intent/README.md) befo
 28. [Combat content manifest](contracts/combat-content-001.json)
 29. [Global simulation order](specs/001-single-level-vertical-slice/simulation-order.md)
 30. [Encounter objectives and Extraction gate](specs/001-single-level-vertical-slice/encounter-objectives.md)
+30a. [Run shell — terminal surface (PROPOSED)](specs/001-single-level-vertical-slice/run-shell.md)
 31. [Runtime kernel schema](contracts/runtime-kernel-001.json)
 32. [Contract version registry](contracts/versions.json)
 33. [Kernel vectors](fixtures/kernel-vectors-001.json)
