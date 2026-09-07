@@ -177,12 +177,20 @@ Props and motifs are **non-collidable** and are placed by `decorations` in
 `scalePermille`. They are presentation only and introduce no authoritative
 state — a decoration cannot block, damage, or conceal anything.
 
-Two placement rules are load-bearing:
+Three placement rules are load-bearing:
 
 - **A decoration may not overlap a permanent solid.** It would read as clutter
   inside a wall, and worse, it would suggest cover where none exists.
+- **A decoration may not overlap another decoration.** Rails running across a
+  parklet deck is the case that found this rule; the first validator checked
+  decorations against solids only, and passed nine mutual overlaps.
 - **Authority Court stays sparse.** It is the boss arena and the busiest screen
   in the game; architecture and dressing must recede there.
+
+A rotated decoration is tested as a **chain of boxes along its spine**, not by
+its bounding box. A 512 x 128 strip at 30 degrees has an axis-aligned bounding
+box roughly 500 x 380, which reports collisions across most of a zone and would
+rule out the spine entirely.
 
 Motif assets are landmarks rather than tiling material, so a placed one is
 placed once and scaled down.
