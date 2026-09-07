@@ -1113,25 +1113,19 @@
       "id": "dec-22",
       "assetId": "env_prop_rail_strip",
       "center": {
-        "x": 448,
-        "y": 500
-      }
+        "x": 766,
+        "y": 328
+      },
+      "rotationMilliDegrees": 30000
     },
     {
       "id": "dec-23",
       "assetId": "env_prop_rail_strip",
       "center": {
-        "x": 960,
-        "y": 500
-      }
-    },
-    {
-      "id": "dec-24",
-      "assetId": "env_prop_rail_strip",
-      "center": {
-        "x": 1472,
-        "y": 500
-      }
+        "x": 1210,
+        "y": 584
+      },
+      "rotationMilliDegrees": 30000
     }
   ]
 }

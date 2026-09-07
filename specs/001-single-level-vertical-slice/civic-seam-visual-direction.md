@@ -138,13 +138,25 @@ So `env_ground_railbed` carries setts and ballast alone, and the rails are
 `env_prop_rail_strip`: a 512-unit section placed end to end, whose rails meet
 both short edges at the same height so a run reads as continuous track.
 
-The run is laid **axis-aligned**, not on the diagonal this document describes as
-the transit spine. A 45-degree run through the Transit Cut fouls the transit
-kiosk and the civic massing and leaves the arena at its southwest end — the
-authored arena is axis-aligned, and the diagonal spine is a compositional
-intent that `civic-seam-arena-001` does not yet implement. Rails that cut
-through a building would suggest a route where none exists, which matters more
-than the angle. Aligning the spine is arena work, not art work.
+The run is laid on the **diagonal spine**, at 30 degrees, through the Transit
+Cut. A decoration carries `rotationMilliDegrees` for this — counter-clockwise
+positive, applied directly as presentation rotation. It is **not** a heading:
+the clockwise-positive milli-degree convention in `combat.md` describes facing
+and targeting, and a decoration faces nothing.
+
+The angle is 30 degrees rather than 45 because **the authored arena is
+axis-aligned and its gaps are not square**. A 45-degree run of any useful length
+fouls the transit kiosk or the civic massing, or leaves the arena at its
+southwest end; a 30-degree run of two sections clears every solid. Rails that
+cut through a building would suggest a route where none exists, which matters
+more than hitting a specific angle.
+
+**The spine is readable, not structural.** Making the arena itself diagonal —
+reshaping zones and solids onto the spine — is a different and much larger
+change: `arenaVersion` is part of the state digest, so it would invalidate every
+golden replay vector, and camera fairness enumerates every legal socket set
+against the solids, so moving them can make arena validation refuse to start a
+run. That remains open, and is arena work rather than art or rendering work.
 
 Two rendering measures reduce tile repetition generally, and neither is a
 substitute for the rule above:
