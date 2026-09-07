@@ -207,6 +207,11 @@
             "type": "integer",
             "minimum": 1,
             "maximum": 1000
+          },
+          "rotationMilliDegrees": {
+            "type": "integer",
+            "minimum": -360000,
+            "maximum": 360000
           }
         }
       }

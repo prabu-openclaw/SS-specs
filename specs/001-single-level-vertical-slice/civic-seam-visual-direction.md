@@ -138,13 +138,25 @@ So `env_ground_railbed` carries setts and ballast alone, and the rails are
 `env_prop_rail_strip`: a 512-unit section placed end to end, whose rails meet
 both short edges at the same height so a run reads as continuous track.
 
-The run is laid **axis-aligned**, not on the diagonal this document describes as
-the transit spine. A 45-degree run through the Transit Cut fouls the transit
-kiosk and the civic massing and leaves the arena at its southwest end — the
-authored arena is axis-aligned, and the diagonal spine is a compositional
-intent that `civic-seam-arena-001` does not yet implement. Rails that cut
-through a building would suggest a route where none exists, which matters more
-than the angle. Aligning the spine is arena work, not art work.
+The run is laid on the **diagonal spine**, at 30 degrees, through the Transit
+Cut. A decoration carries `rotationMilliDegrees` for this — counter-clockwise
+positive, applied directly as presentation rotation. It is **not** a heading:
+the clockwise-positive milli-degree convention in `combat.md` describes facing
+and targeting, and a decoration faces nothing.
+
+The angle is 30 degrees rather than 45 because **the authored arena is
+axis-aligned and its gaps are not square**. A 45-degree run of any useful length
+fouls the transit kiosk or the civic massing, or leaves the arena at its
+southwest end; a 30-degree run of two sections clears every solid. Rails that
+cut through a building would suggest a route where none exists, which matters
+more than hitting a specific angle.
+
+**The spine is readable, not structural.** Making the arena itself diagonal —
+reshaping zones and solids onto the spine — is a different and much larger
+change: `arenaVersion` is part of the state digest, so it would invalidate every
+golden replay vector, and camera fairness enumerates every legal socket set
+against the solids, so moving them can make arena validation refuse to start a
+run. That remains open, and is arena work rather than art or rendering work.
 
 Two rendering measures reduce tile repetition generally, and neither is a
 substitute for the rule above:
@@ -165,12 +177,20 @@ Props and motifs are **non-collidable** and are placed by `decorations` in
 `scalePermille`. They are presentation only and introduce no authoritative
 state — a decoration cannot block, damage, or conceal anything.
 
-Two placement rules are load-bearing:
+Three placement rules are load-bearing:
 
 - **A decoration may not overlap a permanent solid.** It would read as clutter
   inside a wall, and worse, it would suggest cover where none exists.
+- **A decoration may not overlap another decoration.** Rails running across a
+  parklet deck is the case that found this rule; the first validator checked
+  decorations against solids only, and passed nine mutual overlaps.
 - **Authority Court stays sparse.** It is the boss arena and the busiest screen
   in the game; architecture and dressing must recede there.
+
+A rotated decoration is tested as a **chain of boxes along its spine**, not by
+its bounding box. A 512 x 128 strip at 30 degrees has an axis-aligned bounding
+box roughly 500 x 380, which reports collisions across most of a zone and would
+rule out the spine entirely.
 
 Motif assets are landmarks rather than tiling material, so a placed one is
 placed once and scaled down.
