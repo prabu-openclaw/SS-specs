@@ -2,6 +2,7 @@
 
 **Author:**  
 **Date:**  
+**Status:** draft | accepted | superseded  
 **Next stage:** `spec.md`
 
 ## Problem
